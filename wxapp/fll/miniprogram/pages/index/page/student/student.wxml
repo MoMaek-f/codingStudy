@@ -1,2 +1,7 @@
 <!--miniprogram/pages/index/page/student/student.wxml-->
-<text>开发中。。。</text>
+<block>
+<view>
+  <image src="../../../../images/student.png" width="80px" height="80px">name</image>
+  <text></text>
+</view>
+</block>
