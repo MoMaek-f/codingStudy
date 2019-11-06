@@ -1,1 +1,5 @@
 /* miniprogram/pages/index/page/student/student.wxss */
+.face{
+  height: 80rpx;
+  width: 80rpx;
+}
