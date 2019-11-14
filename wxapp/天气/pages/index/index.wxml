@@ -22,8 +22,8 @@
 <view class="weather">
  <image class="pic" src="{{ weatherData[cityCode].realtime.weather.pic }}"></image>
             <view class="desc">
-                <text></text>
-                <text></text>
+                <text>{{weatherData.HeWeather6.now.cond_txt}}</text>
+                <text>{{}}</text>
               </view>
             </view>
             <view class="temperature">

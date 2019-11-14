@@ -17,6 +17,7 @@ function loadWeatherData(cityCode, cb) {
       }
       var weatherData = parseWeatherData(res.data);
       typeof cb == "function" && cb(cityCode, weatherData)
+      console.log(weatherData);
     }
   })
 }
