@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/weather/weather",
     "pages/index/index",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
@@ -14,7 +15,7 @@
     "pages/im/im",
     "pages/im/room/room",
     "pages/location/location",
-    "pages/lesson/lesson",
+   
     "pages/mine/mine",
     "pages/index/page/jianjie/jianjie",
     "pages/index/page/student/student",
@@ -24,7 +25,8 @@
     "pages/index/page/jihua/jihua",
     "pages/index/page/huodong/huodong",
     "pages/index/page/anpai/anpai",
-    "pages/index/page/list/list"
+    "pages/index/page/list/list",
+    "pages/weather/selectCity/selectCity"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -42,8 +44,8 @@
         "selectedIconPath": "images/index_select.png"
       },
       {
-        "pagePath": "pages/lesson/lesson",
-        "text": "课程",
+        "pagePath": "pages/weather/weather",
+        "text": "天气",
         "iconPath": "images/lesson.png",
         "selectedIconPath": "images/lesson_select.png"
       },

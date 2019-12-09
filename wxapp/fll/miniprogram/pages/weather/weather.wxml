@@ -2,13 +2,13 @@
   <view class="header" bindtap="selectCity">
     <view class="city-list">
       <view class="header-city header-city-left">
-    南昌
+    {{topcity.left}}
      </view>
       <view class="header-city header-city-center">
-    九江
+    {{topcity.center}}南昌
       </view>
       <view class="header-city header-city-right">
-    北京
+    {{topcity.right}}
       </view>
     </view>
   </view>
@@ -20,19 +20,19 @@
       <scroll-view>
 <view class="today" bindtap="showDetailPage">
 <view class="weather">
- <image class="pic" src="{{ weatherData[cityCode].realtime.weather.pic }}"></image>
+ <image class="pic" src="../../images/weather-icon/{{weatherData.HeWeather6[0].now.cond_code}}.png"></image>
             <view class="desc">
                 <text>{{weatherData.HeWeather6[0].now.cond_txt}}</text>
-                <text>{{}}</text>
+                <text>{{weatherData.HeWeather6[0].now.wind_dir}}{{weatherData.HeWeather6[0].now.wind_spd}}级</text>
               </view>
             </view>
             <view class="temperature">
-                <text>°</text>
+                <text>{{weatherData.HeWeather6[0].now.tmp}}°C</text>
               </view>
             <view class="more">
-              <text>湿度: </text>
-              <text>PM2.5:</text>
-              <text></text>
+              <text>湿度:{{weatherData.HeWeather6[0].now.hum}}%|  </text>
+              <text>PM2.5: |  </text>
+              <text>空气质量: </text>
             </view>
           </view>
       </scroll-view>

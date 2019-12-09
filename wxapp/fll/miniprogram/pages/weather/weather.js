@@ -1,5 +1,5 @@
 //index.js
-var apiCityWeatherUrl = 'https://free-api.heweather.net/s6/weather/now?location=beijing&key=7d04873a095140c2a82913601075db15';
+var apiCityWeatherUrl = 'https://free-api.heweather.net/s6/weather/now?location=nanchang&key=7d04873a095140c2a82913601075db15';
 
 
 
@@ -10,7 +10,15 @@ Page({
    * 页面的初始数据
    */
   data: {
+    topcity:{},
     weatherData:{},
+  },
+  updateTopCity: function (e) {
+    var topCity = {
+      left: "",
+      center: "",
+      right: "",
+    }
   },
   getWeatherInfo: function (cityCode,cb) {
     var that = this
@@ -23,10 +31,14 @@ Page({
         that.setData({
           weatherData: res.data,
         });
-        //  var weatherData = res.data.HeWeather6.now;
        console.log(res.data);
-        // console.log(weatherData);
       }
+    })
+  },
+  selectCity: function(e) {
+    console.log(e);
+    wx.navigateTo({
+      url: './selectCity/selectCity',
     })
   },
   /**
