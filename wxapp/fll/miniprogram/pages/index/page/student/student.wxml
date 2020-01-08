@@ -1,7 +1,0 @@
-<!--miniprogram/pages/index/page/student/student.wxml-->
-<block>
-<view class="studentMessage">
-  <image class="face" src="../../../../images/student.png"/>
-  <view><text>name</text></view>
-</view>
-</block>

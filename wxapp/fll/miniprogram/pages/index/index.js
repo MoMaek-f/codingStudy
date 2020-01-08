@@ -9,13 +9,13 @@ Page({
   data: {
     navs: [
       { navimg: '../../images/jianjie.png', navtext: '简介', alias: 'jianjie' },
-      { navimg: '../../images/student.png', navtext: '优秀学员', alias: 'student' },
+      { navimg: '../../images/student.png', navtext: '天气', alias: 'weather' },
       { navimg: '../../images/jiangshi.png', navtext: '讲师', alias: 'jiangshi'},
       { navimg: '../../images/ziliao.png', navtext: '资料', alias: 'ziliao'},
-      { navimg: '../../images/anpai.png', navtext: '上课安排', alias: 'anpai'},
-      { navimg: '../../images/jihua.png', navtext: '教学计划', alias: 'jihua'},
-      { navimg: '../../images/huodong.png', navtext: '活动', alias: 'huodong' },
-      { navimg: '../../images/shunfeng.png', navtext: '任务', alias: 'renwu' },
+      { navimg: '../../images/anpai.png', navtext: '行程日历', alias: 'anpai'},
+      { navimg: '../../images/jihua.png', navtext: '学习计划', alias: 'jihua'},
+      { navimg: '../../images/huodong.png', navtext: '放松活动', alias: 'huodong' },
+      { navimg: '../../images/shunfeng.png', navtext: '任务目标', alias: 'renwu' },
     ], 
     navs2: [
       { navimg: '../../images/jianjie.png', navtext: '学习清单', alias: 'list' },
