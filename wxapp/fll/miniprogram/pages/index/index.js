@@ -8,17 +8,17 @@ Page({
  
   data: {
     navs: [
-      { navimg: '../../images/jianjie.png', navtext: '简介', alias: 'jianjie' },
-      { navimg: '../../images/student.png', navtext: '天气', alias: 'weather' },
+      { navimg: '../../images/class.png', navtext: '课表', alias: 'jianjie' },
+      { navimg: '../../images/weather.png', navtext: '天气', alias: 'weather' },
       { navimg: '../../images/jiangshi.png', navtext: '讲师', alias: 'jiangshi'},
       { navimg: '../../images/ziliao.png', navtext: '资料', alias: 'ziliao'},
-      { navimg: '../../images/anpai.png', navtext: '行程日历', alias: 'anpai'},
+      { navimg: '../../images/anpai.png', navtext: '行程日历', alias: 'date'},
       { navimg: '../../images/jihua.png', navtext: '学习计划', alias: 'jihua'},
       { navimg: '../../images/huodong.png', navtext: '放松活动', alias: 'huodong' },
       { navimg: '../../images/shunfeng.png', navtext: '任务目标', alias: 'renwu' },
     ], 
     navs2: [
-      { navimg: '../../images/jianjie.png', navtext: '学习清单', alias: 'list' },
+      { navimg: '../../images/class.png', navtext: '学习清单', alias: 'list' },
      
     ],
     
@@ -31,7 +31,7 @@ Page({
     console.log(pg);
     const alias = pg.currentTarget.dataset.alias
     wx.navigateTo({
-      url: `page/${alias}/${alias}`,    //这个是要加载的页面的路径
+      url: `category/${alias}/${alias}`,    //这个是要加载的页面的路径
       
     })
     

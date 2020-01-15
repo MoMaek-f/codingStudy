@@ -1,13 +1,13 @@
 <!--miniprogram/pages/weather/weather.wxml-->
 <swiper class="header" indicator-dots="true" autoplay="true" interval="3000" circular="true">
   <swiper-item>
-    <image src="../../images/简介 (1).png"></image>
+    <image src="../../images/nav1.jpg"></image>
   </swiper-item>
   <swiper-item>
-    <image src="../../images/简介 (2).png"></image>
+    <image src="../../images/nav2.jpg"></image>
   </swiper-item>
   <swiper-item>
-    <image src="../../images/简介 (3).png"></image>
+    <image src="../../images/nav3.jpg"></image>
   </swiper-item>
 </swiper>
 <swiper class="list" indicator-dots="true">
@@ -28,20 +28,3 @@
     </block>
   </swiper-item>
 </swiper>
-<view class="cantainer">
-    <view class="text">公告</view>
-    <swiper class="announce">
-       <swiper-item>
-       <h2>今晚不上课</h2>
-         <text></text>
-       </swiper-item>
-       <swiper-item>
-       <h2>好好学习</h2>
-         <text></text>
-       </swiper-item>
-       <swiper-item>
-       <h2>大家一起去名企</h2>
-       <text></text>
-       </swiper-item>
-    </swiper>    
-</view>

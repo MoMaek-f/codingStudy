@@ -29,7 +29,7 @@ Page({
       data: {},
       success : function (res){
         that.setData({
-          weatherData: res.data,
+          weatherData: res.data.HeWeather6[0].now,
         });
        console.log(res.data);
       }

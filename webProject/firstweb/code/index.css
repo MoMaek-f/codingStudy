@@ -3,46 +3,50 @@
     padding: 0;
 
 }
-p{
-    text-align: center;
-    color: red;
-    
-}
-.search{
-    text-align: center;
-    left: 50%;
-    
-    
-}
 html{
+  width: 100%;
     height: 100%;
-    background-color: blue;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    font-family: 'helvetica neue';
-    text-align: center;
     font-size: 10px;
    
 }
 body{
     margin: 0;
     font-size: 2rem;
-    /* display: flex; */
     flex: 1;
     min-height: 100vh;
-    align-items: center;
-    justify-content: center;
-    background: #4C4C4C url('../imgage/ls.png');
-    background-size: cover;
+    width: 100%;
+}
+.header{
+    width: 99%;
+    height: 61px;
+    border: 1px solid #f1f1f1;
+    display: flex;
+}
+.choose li{
+  list-style: none;
+  float: left;
+  margin:0px 5px;
+}
+input{
+  position: absolute;
+  height: 32px;
+  left: 72%;
+  border-radius: 5px;
+  outline-style:none;
+}
+.login_register{
+  position: absolute;
+  left: 88%; 
 }
 .clock{
-    width: 30rem;
-    height: 30rem;
+    width: 15rem;
+    height: 15rem;
     border-radius: 50%;
     border: 2PX solid white;
     position: relative;
     padding: 2rem;
+    left: 80%;
+    transform: translateY(100px);
     
     box-shadow: 0 0 0 4px rgba(0,0,0,.1),
     inset 0 0 0 3px #efefef,
@@ -87,4 +91,24 @@ body{
 .second-hand{
     height: 2px;
     width: 50%;
+}
+.context{
+  display: flex;
+  align-items: flex-start;
+  border-bottom: 1px solid #f1f1f1;
+  border-top: 1px solid #ecd7d7;
+  width: 90%;
+  top: 65px;
+  height: 65px;
+}
+.context-box{
+
+}
+
+
+.beianinfo {
+  position: absolute;
+  font-size: 1rem;
+  left: 50%;
+  bottom: 0px;
 }

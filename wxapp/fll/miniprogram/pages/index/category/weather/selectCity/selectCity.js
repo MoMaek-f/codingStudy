@@ -9,7 +9,7 @@ Page({
     citySelected: [
       { 
         city: `{{weatherData.HeWeather6[0].basic.parent_city}}`,
-        pic: `../../images/weather-icon/{{weatherData.HeWeather6[0].now.cond_code}}.png`
+        pic: `../../../../images/weather-icon/{{weatherData.now.cond_code}}.png`
       }
     ],
   },
