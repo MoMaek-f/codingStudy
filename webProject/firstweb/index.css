@@ -17,10 +17,14 @@ body{
     width: 100%;
 }
 .header{
+    position: fixed;
+    top: 0;
     width: 99%;
     height: 61px;
     border: 1px solid #f1f1f1;
     display: flex;
+    z-index: 100;
+    background-color: #fff;
 }
 .choose li{
   list-style: none;
@@ -39,11 +43,11 @@ input{
   left: 88%; 
 }
 .clock{
+    position: fixed;
     width: 15rem;
     height: 15rem;
     border-radius: 50%;
     border: 2PX solid white;
-    position: relative;
     padding: 2rem;
     left: 80%;
     transform: translateY(100px);
@@ -93,16 +97,29 @@ input{
     width: 50%;
 }
 .context{
-  display: flex;
+  display: inline-flexbox;
   align-items: flex-start;
-  border-bottom: 1px solid #f1f1f1;
-  border-top: 1px solid #ecd7d7;
-  width: 90%;
-  top: 65px;
-  height: 65px;
+  border: 1px solid #ecd7d7;
+  width: 55%;
+  /* height: 5rem; */
+  margin: 0 auto;
+  position: relative;
+  top: 70px;
+  overflow: hidden;
 }
 .context-box{
-
+  width: 100%;
+  border: 1px solid #f1f1f1;
+  overflow: hidden;
+}
+.action-lists li{
+  list-style: none;
+  float: left;
+  margin: 0;
+}
+.action-lists li img{
+  width: 32px;
+  height: 24px;
 }
 
 
