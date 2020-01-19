@@ -111,6 +111,23 @@ input{
   width: 100%;
   border: 1px solid #f1f1f1;
   overflow: hidden;
+  display: flex;
+}
+.context-box .icon{
+  width: 200px;
+  height: 130px;
+  overflow: hidden;
+}
+.context-box .icon img{
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  min-height: 100%;
+}
+.message-header{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  table-layout:fixed;word-wrap:break-word;word-break:break-all;
 }
 .action-lists li{
   list-style: none;
