@@ -127,7 +127,7 @@ input{
 .message-header{
   overflow: hidden;
   text-overflow: ellipsis;
-  table-layout:fixed;word-wrap:break-word;word-break:break-all;
+  
 }
 .action-lists li{
   list-style: none;
@@ -140,9 +140,10 @@ input{
 }
 
 
-.beianinfo {
-  position: absolute;
-  font-size: 1rem;
-  left: 50%;
+.beian {
+  position: fixed;
   bottom: 0px;
+  font-size: 12px;
+  width: 100%;
+  margin: 0 auto;
 }
