@@ -5,9 +5,9 @@ const router = require('koa-router')({
 const controllers = require('../controllers/automatch')
 //登录接口
 router.post('/index',controllers.index.login)
-//学生信息相关的接口
+//学生信息相关的接口queryOwnStudentMessAction?
 router.get('/studentMess/queryAllStudentMessAction',controllers.studentMess.queryAllStudentMessAction)
-router.get('/studentMess/queryOwnStudentMessAction',controllers.studentMess.queryOwnStudentMessAction)
+router.get('/studentMess/queryOwnStudentMessAction/:stu_number',controllers.studentMess.queryOwnStudentMessAction)
 router.post('/studentMess/updateStudentMessAction',controllers.studentMess.updateStudentMessAction)
 router.post('/studentMess/addStudentMessAction',controllers.studentMess.addStudentMessAction)
 

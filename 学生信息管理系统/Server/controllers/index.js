@@ -3,10 +3,10 @@ const {mysql} = require('../mysql')
 async function login(ctx) {
   const value = ctx.request.body
   const data = await mysql('users').where({
-      'admin_username': value.username,
-      'admin_password': value.password,
+      'username': value.username,
+      'password': value.password,
   }).select()
-  // console.log(data)
+  console.log(value)
    
 if(data!='') {
   ctx.body = {

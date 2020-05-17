@@ -2,7 +2,6 @@ const {mysql} = require('../mysql')
 
 async function queryAllStudentMessAction(ctx) {
   const data = await mysql('student_message').select()
-
   if(data) {
     ctx.body = {
       'data': data
@@ -15,10 +14,13 @@ async function queryAllStudentMessAction(ctx) {
   }
 }
 async function queryOwnStudentMessAction(ctx) {
-  const value = ctx.request.body
+  const value = ctx.params
+  console.log(value)
   const data = await mysql('student_message').where({
-    'stu_number': value.username
+    // 'stu_number': value.username
+    'stu_number': value.stu_number
   }).select()
+  console.log(data)
 
   if(data) {
     ctx.body = {
@@ -32,8 +34,9 @@ async function queryOwnStudentMessAction(ctx) {
   }
 }
 async function updateStudentMessAction(ctx) {
+  const value = ctx.request.body
   const data = await mysql('student_message').where({
-    'stu_number': 'value.number'
+    'stu_number': value.stu_number
   }).update({
     'stu_name': '',
     'stu_number': '',
