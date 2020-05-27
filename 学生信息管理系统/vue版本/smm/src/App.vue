@@ -1,13 +1,9 @@
-<!--
- * @Author: your name
- * @Date: 2020-05-26 19:07:20
- * @LastEditTime: 2020-05-27 11:04:42
- * @LastEditors: your name
- * @Description: In User Settings Edit
- * @FilePath: \Vue\仿知乎\zhihu-vue\src\App.vue
---> 
 <template>
   <div id="app">
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div>
     <router-view/>
   </div>
 </template>
