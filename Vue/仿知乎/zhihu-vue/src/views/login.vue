@@ -1,7 +1,23 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-05-27 10:53:50
+ * @LastEditTime: 2020-05-28 00:54:05
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Vue\仿知乎\zhihu-vue\src\views\login.vue
+--> 
 <template>
-  <div id="login">
-    <div class="loginToHome">
-      <el-form
+  <div class="HomePage">
+    <div class="main">
+      <div class="main-content">
+        <img
+          class="logo"
+          src="https://pic4.zhimg.com/80/v2-a47051e92cf74930bedd7469978e6c08_hd.png"
+          alt
+        />
+        <div class="loginContainer-content">
+          <div class="loginContainer-inner">
+            <el-form
         ref="form"
         :model="form"
         :rules="ruleForm"
@@ -48,10 +64,13 @@
           >重置</el-button>
         </el-form-item>
       </el-form>
- 
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
+
 <script>
 export default {
   data() {
@@ -72,61 +91,13 @@ export default {
     }
   },
   methods: {
-    submit(event) {
-      this.$refs.form.validate((valid) => {
-        if (valid) {
-          this.logining = true;
-          if (this.form.name === 'admin' &&
-            this.form.password === '123456') {
-            this.logining = false;
-            sessionStorage.setItem('user', this.form.name);
-            this.$router.push({ name: 'home' });
-          } else {
-            this.logining = false;
-            this.$alert('name or password wrong!', 'info', {
-              confirmButtonText: 'ok'
-            })
-          }
-        } else {
-          console.log('error submit!');
-          return false;
-        }
-      })
-    },
-    resetForm() {
-      this.$refs.form.resetFields();
-    }
- 
+    dothis() {
+      console.log('123')
+   }
   }
-}
+};
 </script>
-<style>
-.loginToHome {
-  position: absolute;
-  left: 0px;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  width: 400px;
-  height: 260px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  background: #fff;
-  border: 1px solid #dcdfe6;
-}
-.loginForm {
-  text-align: center;
-  padding-top: 15px;
-  padding-right: 30px;
-  top: 10px;
-}
-.homeBut {
-  position: absolute;
-  left: 0px;
-}
-.loginBut {
-  position: absolute;
-  right: 0px;
-}
+
+<style lang="less" scoped>
+@import "./style.less";
 </style>
