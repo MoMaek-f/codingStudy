@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-28 19:50:45
- * @LastEditTime: 2020-05-29 19:19:49
+ * @LastEditTime: 2020-06-03 22:31:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit 
  * @FilePath: \学生信息管理系统\vue版本\smm\src\views\login\login.vue
@@ -38,8 +38,8 @@ export default {
     return {
       logining: false,
       form: {
-        name: "wsc",
-        password: "wsc"
+        name: "201720182004",
+        password: "1234"
       },
       ruleForm: {
         name: [{ required: true, message: "请输入账号", trigger: "blur" }],
@@ -54,7 +54,7 @@ export default {
           this.logining = true;
           this.axios
             .post("http://localhost:6500/api/login", {
-              name: this.form.name,
+              Id: this.form.name,
               password: this.form.password
             })
             .then(res => {
@@ -62,8 +62,13 @@ export default {
               // console.log(res)
               if (data.status === 200) {
                 this.logining = false;
-                sessionStorage.setItem("user", this.form.name);
-                this.$router.push({name: "homePage",query: {username:this.form.name} });
+                if(data.Identity == 'admin') {
+                this.$router.push({name: "homePage", query: {username:this.form.name} });
+                }
+                else{
+                  this.$router.push({name: "studentPage", query: {username:this.form.name} });
+                }
+
               } else {
                 this.logining = false;
                 this.$alert("用户名或密码错误!", "登陆失败", {
