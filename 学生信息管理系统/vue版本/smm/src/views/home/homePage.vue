@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-28 21:33:09
- * @LastEditTime: 2020-06-04 23:17:58
+ * @LastEditTime: 2020-06-04 23:36:02
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \学生信息管理系统\vue版本\smm\src\views\home\homePage.vue
@@ -13,7 +13,7 @@
       <el-dropdown>
         <i class="el-icon-setting" style="margin-right: 25px; cursor:pointer;"></i>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>登出</el-dropdown-item>
+          <el-dropdown-item @click="exit()">登出</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
       <span style="cursor:pointer;">{{userid}}</span>
@@ -194,6 +194,10 @@ export default {
         this.scores = data.achieve;
       });
     },
+    exit() {
+      console.log("dengchu");
+      this.$router.push({name: "login"})
+    },
     showAllStudent(select) {
       this.selected = select;
       console.log("1-1");
@@ -233,6 +237,9 @@ export default {
             this.selected = "1-1";
           }
         });
+    },
+    cancel(){
+      this.selected = "1-1";
     },
     deleteMess(deleteStuMess) {
       console.log("delete");
