@@ -1,8 +1,8 @@
 /*
  * @Author: your name
- * @Date: 2020-06-03 21:49:31
- * @LastEditTime: 2020-06-03 22:14:46
- * @LastEditors: your name
+ * @Date: 2020-06-04 20:42:10
+ * @LastEditTime: 2020-06-04 23:14:43
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \学生信息管理系统\vue版本\server\controllers\user.js
  */ 
@@ -30,13 +30,15 @@ class UserCtl {
       // ctx.throw(401, '用户名或密码不正确'); 
       return ctx.body = { status: 401, message: '用户名或密码不正确' };
     }
-    const { _id, name, Identity } = user;
+    const { _id, name } = user;
     const token = jsonwebtoken.sign({ _id, name }, secret, { expiresIn: '1d' });
-    ctx.body = { status: 200, token, Identity};
+    ctx.body = { status: 200, token, user};
   }
   // 修改学生信息
   async updateMsg(ctx) {
-    const user = await User.findByIdAndUpdate(ctx.params.id, ctx.request.body);
+    // console.log(ctx.params.id)
+    // console.log(ctx.request.body)
+    const user = await User.findOneAndUpdate(ctx.params.id, ctx.request.body);
     if (!user) { ctx.throw(404, '用户不存在'); }
     ctx.body = {status: 200, msg: '修改成功'};
   }
@@ -46,18 +48,29 @@ class UserCtl {
     const result = await Achievement.findOne({ id })
     ctx.body = {status: 200, result}
   }
+
   async find(ctx) {
     const msg = await User.find()
+    // console.log(msg)
     const achieve = await Achievement.find()
     ctx.body = {status: 200, msg, achieve}
   }
+
   async updateAchieve(ctx) {
     const id = ctx.params.id
     const result = await Achievement.findOneAndUpdate({id}, ctx.request.body)
-    console.log(result);
+    // console.log(result);
     
     ctx.body = {status: 200, msg: '修改成功'}
   }
+   
+  async deleteMsg(ctx) {
+    const Id = ctx.params.id
+    const result = await User.findOneAndDelete({Id})
+    const res = await Achievement.findOneAndDelete({Id})
+    ctx.body = {status: 200, msg: '删除成功'}
+  }
+
 }
 
 module.exports = new UserCtl

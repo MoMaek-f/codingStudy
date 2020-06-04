@@ -15,8 +15,8 @@ const userSchema = new Schema({
         type: Number,
         required: true
     },
-    age: {
-        type: Number,
+    birthday: {
+        type: String,
         required: true
     },
     gender: {
@@ -32,6 +32,22 @@ const userSchema = new Schema({
         required: true
     },
     Identity: {
+        type: String,
+        required: true
+    },
+    class: {
+        type: String,
+        required: true
+    },
+    college:{
+        type: String,
+        required: true
+    },
+    Political_outlook: {
+        type: String,
+        required: true
+    },
+    nation: {
         type: String,
         required: true
     }
