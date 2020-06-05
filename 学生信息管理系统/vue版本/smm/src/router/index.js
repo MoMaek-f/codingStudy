@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-27 23:16:14
- * @LastEditTime: 2020-06-03 22:28:58
+ * @LastEditTime: 2020-06-05 10:23:26
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \学生信息管理系统\vue版本\smm\src\router\index.js
@@ -33,7 +33,7 @@ Vue.use(VueRouter)
   {
     path: '/studentPage',
     name: 'studentPage',
-    component: () => import('../views/student/student.vue')
+    component: () => import('../views/studentPage/studentPage.vue')
   }
 ]
 

@@ -11,7 +11,7 @@
  Target Server Version : 40205
  File Encoding         : 65001
 
- Date: 04/06/2020 23:15:23
+ Date: 05/06/2020 14:49:54
 */
 
 
@@ -110,7 +110,7 @@ db.getCollection("achievements").insert([ {
 } ]);
 db.getCollection("achievements").insert([ {
     _id: ObjectId("5ed8b82aae28f72f305a2e2f"),
-    Id: "2017201820011",
+    Id: "201720182011",
     Java: NumberInt("100"),
     JavaEE: NumberInt("90"),
     Node: NumberInt("80"),
@@ -122,7 +122,7 @@ db.getCollection("achievements").insert([ {
 } ]);
 db.getCollection("achievements").insert([ {
     _id: ObjectId("5ed8b82dae28f72f305a2e30"),
-    Id: "2017201820015",
+    Id: "201720182015",
     Java: NumberInt("100"),
     JavaEE: NumberInt("90"),
     Node: NumberInt("80"),
@@ -130,6 +130,24 @@ db.getCollection("achievements").insert([ {
     Vue: NumberInt("60"),
     C: NumberInt("65"),
     React: NumberInt("65"),
+    __v: NumberInt("0")
+} ]);
+
+// ----------------------------
+// Collection structure for admins
+// ----------------------------
+db.getCollection("admins").drop();
+db.createCollection("admins");
+
+// ----------------------------
+// Documents of admins
+// ----------------------------
+db.getCollection("admins").insert([ {
+    _id: ObjectId("5ed9b14711c601524c4e0159"),
+    name: "admin",
+    password: "1234",
+    Id: NumberInt("1234"),
+    Identity: "admin",
     __v: NumberInt("0")
 } ]);
 

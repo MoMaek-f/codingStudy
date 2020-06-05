@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2020-06-04 20:42:10
- * @LastEditTime: 2020-06-04 23:12:31
- * @LastEditors: your name
- * @Description: In User Settings Edit
- * @FilePath: \学生信息管理系统\vue版本\server\models\achievement.js
- */ 
 const mongoose = require('mongoose')
 const { Schema, model } = mongoose
 

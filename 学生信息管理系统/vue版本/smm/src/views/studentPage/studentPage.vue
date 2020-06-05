@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-28 21:33:09
- * @LastEditTime: 2020-06-05 17:49:30
+ * @LastEditTime: 2020-06-05 18:06:39
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \学生信息管理系统\vue版本\smm\src\views\home\homePage.vue
@@ -22,32 +22,23 @@
     </el-header>
     <el-container>
       <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-        <el-menu :default-openeds="['1','2']">
+        <el-menu :default-openeds="['1']">
           <el-submenu index="1">
             <template slot="title">
               <i class="el-icon-message"></i>基本信息
             </template>
-            <!-- <template slot="title">分组一</template> -->
-            <el-menu-item index="1-1" @click="showAllStudent('1-1')">全部学生信息</el-menu-item>
+            <el-menu-item index="1-1" @click="queryMess('1-1')">查询信息</el-menu-item>
+            <el-menu-item index="1-2" @click="changePass('1-2')">修改密码</el-menu-item>
           </el-submenu>
           <el-submenu index="2">
             <template slot="title">
               <i class="el-icon-menu"></i>成绩查询
             </template>
-            <el-menu-item index="2-1" @click="allStuScores('2-1')">全部学生成绩</el-menu-item>
+            <el-menu-item index="2-1" @click="searchScores('2-1')">成绩查询</el-menu-item>
           </el-submenu>
         </el-menu>
       </el-aside>
-      <el-main v-if="selected == '1-1'">
-        <el-button style="float:left" @click="back()">返回</el-button>
-        <span style="font-size:18px ">查找学生信息</span>
-        <el-input
-          type="input"
-          v-model="input"
-          placeholder="请输入要查询的学号"
-          style="width:300px;float:right"
-          @change="search(input)"
-        ></el-input>
+      <el-main v-if="selected=='1-1'">
         <el-table :data="studentMess" key="studentMess">
           <el-table-column type="index" label="序号" width="80"></el-table-column>
           <el-table-column prop="name" label="姓名" width="120"></el-table-column>
@@ -69,6 +60,46 @@
         </el-table>
       </el-main>
       <el-main v-else-if="selected == '1-2'">
+          <el-form
+            :model="ruleForm"
+            status-icon
+            :rules="rules"
+            ref="ruleForm"
+            label-width="100px"
+            class="demo-ruleForm"
+            :label-position="labelPosition"
+          >
+            <el-form-item label="原密码" prop="pass">
+              <el-input
+                type="password"
+                v-model="ruleForm.pass"
+                autocomplete="off"
+                style="width: 300px;float: left"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="新密码" prop="pass">
+              <el-input
+                type="password"
+                v-model="ruleForm.pass"
+                autocomplete="off"
+                style="width: 300px;float: left"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="确认密码" prop="checkPass">
+              <el-input
+                type="password"
+                v-model="ruleForm.checkPass"
+                autocomplete="off"
+                style="width: 300px;float: left"
+              ></el-input>
+            </el-form-item>
+            <el-form-item style="float: left">
+              <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+              <el-button @click="resetForm('ruleForm')">重置</el-button>
+            </el-form-item>
+          </el-form>
+      </el-main>
+      <el-main v-else-if="selected == '1-3'">
         <span style="font-size: 18px">修改学生信息</span>
         <div>
           <div style="margin: 20px;"></div>
@@ -114,15 +145,6 @@
         </div>
       </el-main>
       <el-main v-else-if="selected == '2-1'">
-        <el-button style="float:left" @click="back()">返回</el-button>
-        <span style="font-size:18px ">查找成绩信息</span>
-        <el-input
-          type="input"
-          v-model="input"
-          placeholder="请输入要查询的学号"
-          style="width:300px;float:right"
-          @change="searchScores(input)"
-        ></el-input>
         <el-table :data="scores" key="scores">
           <el-table-column type="index" label="序号" width="120"></el-table-column>
           <el-table-column prop="Id" label="学号" width="120"></el-table-column>
@@ -149,21 +171,41 @@
 <script>
 export default {
   data() {
+    var validatePass = (rule, value, callback) => {
+      if (value === "") {
+        callback(new Error("请输入密码"));
+      } else {
+        if (this.ruleForm.checkPass !== "") {
+          this.$refs.ruleForm.validateField("checkPass");
+        }
+        callback();
+      }
+    };
+    var validatePass2 = (rule, value, callback) => {
+      if (value === "") {
+        callback(new Error("请再次输入密码"));
+      } else if (value !== this.ruleForm.pass) {
+        callback(new Error("两次输入密码不一致!"));
+      } else {
+        callback();
+      }
+    };
     return {
       studentMess: [],
+      updateStuMess:"",
+      data1: [],
       userid: "",
       selected: "1-1",
       labelPosition: "left",
-      formLabelAlign: {
-        name: "",
-        region: "",
-        type: ""
+      ruleForm: {
+        pass: "",
+        checkPass: ""
       },
-      radio: "女",
-      input: "",
-      scores: [],
-      updateStuMess: "",
-      searchMess: [{}]
+      rules: {
+        pass: [{ validator: validatePass, trigger: "blur" }],
+        checkPass: [{ validator: validatePass2, trigger: "blur" }]
+      },
+      scores:[]
     };
   },
   mounted() {
@@ -172,24 +214,43 @@ export default {
   },
   methods: {
     getmessage() {
-      this.axios.get("http://localhost:6500/api/find").then(res => {
-        const data = res.data;
-        console.log(data);
-        this.studentMess = data.msg;
-        this.scores = data.achieve;
+      this.axios
+        .get(`http://localhost:6500/api/findmsgbyid/${this.userid}`)
+        .then(res => {
+          let data = [res.data.user]
+          this.studentMess = data
+        });
+    },
+    queryMess(index) {
+      this.selected = index;
+    },
+    changePass(index) {
+      this.selected= index
+    },
+    queryScores(index){
+      this.selected = index;
+    },
+    submitForm(formName) {
+      this.$refs[formName].validate(valid => {
+        if (valid) {
+          alert("submit!");
+        } else {
+          console.log("请重新输入");
+          return false;
+        }
       });
     },
-    showAllStudent(select) {
-      this.selected = select;
-      console.log("1-1");
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
+    },
+    exit() {
+      console.log("123");
+      this.$router.push({ name: "login" });
     },
     toDetail(studentMess) {
-      this.selected = "1-2";
+      this.selected = "1-3";
       console.log(studentMess);
       this.updateStuMess = studentMess;
-    },
-    allStuScores(select) {
-      this.selected = select;
     },
     updateMess(updateStuMess) {
       const Mes = {
@@ -215,60 +276,10 @@ export default {
           }
         });
     },
-    cancel() {
-      this.selected = "1-1";
-    },
-    deleteMess(deleteStuMess) {
-      this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning"
-      })
-        .then(() => {
-          this.axios
-            .delete(`http://localhost:6500/api/delete/${deleteStuMess.Id}`)
-            .then(res => {
-              // console.log(res)
-              if (res.data.status) {
-                this.$message({
-                  type: "success",
-                  message: "删除成功!"
-                });
-                this.axios.get("http://localhost:6500/api/find").then(res => {
-                  const data = res.data;
-                  console.log(data);
-                  this.studentMess = data.msg;
-                  this.scores = data.achieve;
-                });
-                this.selected = "1-1";
-              }
-            });
-        })
-        .catch(() => {
-          this.$message({
-            type: "info",
-            message: "已取消删除"
-          });
-        });
-    },
-    search(input) {
-      this.axios
-        .get(`http://localhost:6500/api/findmsgbyid/${input}`)
-        .then(res => {
-          let data = [res.data.user];
-          this.studentMess = data;
-          // console.log(res);
-          if (res.data.status == 400) {
-            this.$alert("没有结果", "失败", {
-              confirmButtonText: "确定",
-            });
-          }
-        });
-    },
     searchScores(input) {
-      console.log("13");
+      this.selected = "2-1";
       this.axios
-        .get(`http://localhost:6500/api/achievement/${input}`)
+        .get(`http://localhost:6500/api/achievement/${this.userid}`)
         .then(res => {
           let data = [res.data.result];
           this.scores = data;
@@ -279,18 +290,21 @@ export default {
             });
           }
         });
-    },
-    exit() {
-      this.$router.push({ name: "login" });
-    },
-    back() {
-      this.getmessage();
     }
   }
 };
 </script>
 
 <style lang="less" scoped>
-@import "homePage.less";
+.el-header {
+  background-color: #b3c0d1;
+  color: #333;
+  line-height: 60px;
+  .el-container {
+    .el-aside {
+      color: #333;
+    }
+  }
+}
 </style>
 

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-28 19:50:45
- * @LastEditTime: 2020-06-04 14:54:49
+ * @LastEditTime: 2020-06-05 17:30:58
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit 
  * @FilePath: \学生信息管理系统\vue版本\smm\src\views\login\login.vue
@@ -59,14 +59,14 @@ export default {
             })
             .then(res => {
               const data = res.data;
-              console.log(res)
+              console.log(data)
               if (data.status === 200) {
                 this.logining = false;
                 if(data.user.Identity == 'admin') {
-                this.$router.push({name: "homePage", query: {username:this.form.name} });
+                this.$router.push({name: "homePage", query: {username:this.form.name,password: this.form.password} });
                 }
                 else{
-                  this.$router.push({name: "studentPage", query: {username:this.form.name} });
+                  this.$router.push({name: "studentPage", query: {username:this.form.name,password: this.form.password} });
                 }
 
               } else {
