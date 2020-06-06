@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2020-06-05 14:49:59
- * @LastEditTime: 2020-06-05 17:51:22
- * @LastEditors: your name
+ * @LastEditTime: 2020-06-05 18:31:44
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \学生信息管理系统\vue版本\server\route\user.js
  */ 
@@ -18,7 +18,7 @@ router.post('/api/createachieve', createAchieve)
 
 router.post('/api/updatemsg/:id', updateMsg) // 通过学号修改信息
 
-router.patch('/api/updateachieve/:id', updateAchieve)// 通过学号修改学生成绩
+router.post('/api/updateachieve/:id', updateAchieve)// 通过学号修改学生成绩
 
 router.post('/api/login', login) 
 

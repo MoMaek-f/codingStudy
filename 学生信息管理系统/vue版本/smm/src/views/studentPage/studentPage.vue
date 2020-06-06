@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-28 21:33:09
- * @LastEditTime: 2020-06-05 18:06:39
+ * @LastEditTime: 2020-06-05 18:33:43
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \学生信息管理系统\vue版本\smm\src\views\home\homePage.vue
@@ -155,13 +155,6 @@
           <el-table-column prop="Node" label="Node" width="120"></el-table-column>
           <el-table-column prop="React" label="React" width="120"></el-table-column>
           <el-table-column prop="Vue" label="Vue" width="120"></el-table-column>
-
-          <el-table-column label="操作" width="170">
-            <template slot-scope="scope">
-              <el-button style="float:left" @click="toDetail(scope.row)">修改</el-button>
-              <el-button @click="deleteMess(scope.row)">删除</el-button>
-            </template>
-          </el-table-column>
         </el-table>
       </el-main>
     </el-container>

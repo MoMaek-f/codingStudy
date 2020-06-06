@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-28 21:33:09
- * @LastEditTime: 2020-06-05 17:49:30
+ * @LastEditTime: 2020-06-06 23:51:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \学生信息管理系统\vue版本\smm\src\views\home\homePage.vue
@@ -40,6 +40,7 @@
       </el-aside>
       <el-main v-if="selected == '1-1'">
         <el-button style="float:left" @click="back()">返回</el-button>
+        <el-button style="float:left" @click="AddStu()">新增学生</el-button>
         <span style="font-size:18px ">查找学生信息</span>
         <el-input
           type="input"
@@ -136,11 +137,43 @@
 
           <el-table-column label="操作" width="170">
             <template slot-scope="scope">
-              <el-button style="float:left" @click="toDetail(scope.row)">修改</el-button>
-              <el-button @click="deleteMess(scope.row)">删除</el-button>
+              <el-button style="float:left" @click="changeScores(scope.row)">修改</el-button>
             </template>
           </el-table-column>
         </el-table>
+      </el-main>
+      <el-main v-else-if="selected == '2-2'">
+        <span style="font-size: 18px">修改成绩信息</span>
+        <div>
+          <div style="margin: 20px;"></div>
+          <el-form :label-position="labelPosition" label-width="120px" :model="formLabelAlign">
+            <el-form-item label="C">
+              <el-input v-model="updateScores.C" style="width: 300px; float:left"></el-input>
+            </el-form-item>
+            <el-form-item label="Java">
+              <el-input v-model="updateScores.Java" style="width: 300px; float:left"></el-input>
+            </el-form-item>
+            <el-form-item label="JavaEE">
+              <el-input v-model="updateScores.JavaEE" style="width: 300px; float:left"></el-input>
+            </el-form-item>
+            <el-form-item label="javaScript">
+              <el-input v-model="updateScores.JavaScript" style="width: 300px; float:left"></el-input>
+            </el-form-item>
+            <el-form-item label="Node">
+              <el-input v-model="updateScores.Node" style="width: 300px; float:left"></el-input>
+            </el-form-item>
+            <el-form-item label="React">
+              <el-input v-model="updateScores.React" style="width: 300px; float:left"></el-input>
+            </el-form-item>
+            <el-form-item label="Vue">
+              <el-input v-model="updateScores.Vue" style="width: 300px; float:left"></el-input>
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary" style="float:left" @click="updateScore(updateScores)">确认</el-button>
+              <el-button type="primary" style="float:left" @click="cancel()">取消</el-button>
+            </el-form-item>
+          </el-form>
+        </div>
       </el-main>
     </el-container>
   </el-container>
@@ -163,6 +196,7 @@ export default {
       input: "",
       scores: [],
       updateStuMess: "",
+      updateScores: "",
       searchMess: [{}]
     };
   },
@@ -285,6 +319,25 @@ export default {
     },
     back() {
       this.getmessage();
+    },
+    changeScores(scores) {
+      this.selected = "2-2";
+      console.log(scores);
+      this.updateScores = scores;
+    },
+    updateScore(updateScore) {
+      this.axios
+        .post(`http://localhost:6500/api/updateachieve/${updateScore.Id}`, updateScore)
+        .then(res => {
+          // console.log(res)
+          if (res.data.status) {
+            alert(res.data.msg);
+            this.selected = "2-1";
+          }
+        });
+    },
+    AddStu() {
+      
     }
   }
 };
