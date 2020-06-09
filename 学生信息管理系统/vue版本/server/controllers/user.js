@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-06-05 14:49:58
+ * @LastEditTime: 2020-06-09 09:28:09
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \学生信息管理系统\vue版本\server\controllers\user.js
+ */ 
 const User = require('../models/user')
 const Achievement = require('../models/achievement')
 const Admin = require('../models/Admin')
@@ -36,9 +44,12 @@ class UserCtl {
   }
   // 修改学生信息
   async updateMsg(ctx) {
-    console.log(ctx.params.id)
+    console.log(ctx.params.id, 'update')
     console.log(ctx.request.body)
-    const user = await User.findOneAndUpdate(ctx.params.id, ctx.request.body);
+    let Id = ctx.params.id
+    const user = await User.findOneAndUpdate({ Id }, ctx.request.body)
+    // const user = await User.findOneAndUpdate(Id, ctx.request.body);
+    console.log(user)
     if (!user) { ctx.throw(404, '用户不存在'); }
     ctx.body = { status: 200, msg: '修改成功' };
   }

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-28 21:33:09
- * @LastEditTime: 2020-06-06 23:51:15
+ * @LastEditTime: 2020-06-09 08:43:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \学生信息管理系统\vue版本\smm\src\views\home\homePage.vue
@@ -40,7 +40,7 @@
       </el-aside>
       <el-main v-if="selected == '1-1'">
         <el-button style="float:left" @click="back()">返回</el-button>
-        <el-button style="float:left" @click="AddStu()">新增学生</el-button>
+        <el-button style="float:left" @click="AddStu('2-3')">新增学生</el-button>
         <span style="font-size:18px ">查找学生信息</span>
         <el-input
           type="input"
@@ -61,7 +61,7 @@
           <el-table-column prop="Political_outlook" label="政治面貌" width="80"></el-table-column>
           <el-table-column prop="college" label="所在学院" width="140"></el-table-column>
           <el-table-column prop="phone" label="联系方式" width="140"></el-table-column>
-          <el-table-column prop="phone" label="操作" width="170">
+          <el-table-column  label="操作" width="170">
             <template slot-scope="scope">
               <el-button style="float:left" @click="toDetail(scope.row)">修改</el-button>
               <el-button @click="deleteMess(scope.row)">删除</el-button>
@@ -175,6 +175,54 @@
           </el-form>
         </div>
       </el-main>
+      <el-main v-else-if="selected == '2-3'">
+        <span style="font-size: 18px">注册学生信息</span>
+        <div>
+          <div style="margin: 20px;"></div>
+          <el-form :label-position="labelPosition" label-width="120px" :model="formLabelAlign">
+            <el-form-item label="姓名">
+              <el-input v-model="addStu.name" style="width: 300px; float:left"></el-input>
+            </el-form-item>
+            <el-form-item label="班级">
+              <el-input v-model="addStu.class" style="width: 300px; float:left"></el-input>
+            </el-form-item>
+            <el-form-item label="学号">
+              <el-input v-model="addStu.Id" style="width: 300px; float:left"></el-input>
+            </el-form-item>
+            <el-form-item label="性别">
+              <el-input v-model="addStu.gender" style="width: 300px; float:left"></el-input>
+            </el-form-item>
+            <el-form-item label="地址">
+              <el-input v-model="addStu.address" style="width: 300px; float:left"></el-input>
+            </el-form-item>
+            <el-form-item label="生日">
+              <el-input v-model="addStu.birthday" style="width: 300px; float:left"></el-input>
+            </el-form-item>
+            <el-form-item label="民族">
+              <el-input v-model="addStu.nation" style="width: 300px; float:left"></el-input>
+            </el-form-item>
+            <el-form-item label="政治面貌">
+              <el-input v-model="addStu.Political_outlook" style="width: 300px; float:left"></el-input>
+            </el-form-item>
+            <el-form-item label="所在学院">
+              <el-input v-model="addStu.college" style="width: 300px; float:left"></el-input>
+            </el-form-item>
+            <el-form-item label="联系方式">
+              <el-input v-model="addStu.phone" style="width: 300px; float:left"></el-input>
+            </el-form-item>
+            <el-form-item label="密码">
+              <el-input v-model="addStu.password" style="width: 300px; float:left"></el-input>
+            </el-form-item>
+            <el-form-item label="身份">
+              <el-input v-model="addStu.Identity" style="width: 300px; float:left"></el-input>
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary" style="float:left" @click="confirmAdd(addStu)">确认</el-button>
+              <el-button type="primary" style="float:left" @click="cancel()">取消</el-button>
+            </el-form-item>
+          </el-form>
+        </div>
+      </el-main>
     </el-container>
   </el-container>
 </template>
@@ -197,7 +245,10 @@ export default {
       scores: [],
       updateStuMess: "",
       updateScores: "",
-      searchMess: [{}]
+      searchMess: [{}],
+      addStu:{
+        Identity: 'student'
+      }
     };
   },
   mounted() {
@@ -215,7 +266,10 @@ export default {
     },
     showAllStudent(select) {
       this.selected = select;
-      console.log("1-1");
+      // console.log("1-1");
+      this.getmessage();
+    },AddStu(select) {
+      this.selected = select
     },
     toDetail(studentMess) {
       this.selected = "1-2";
@@ -336,8 +390,12 @@ export default {
           }
         });
     },
-    AddStu() {
-      
+    confirmAdd(addStu) {
+      this.axios
+      .post('http://localhost:6500/api/create',addStu)
+      .then(res => {
+        console.log(res)
+      })
     }
   }
 };

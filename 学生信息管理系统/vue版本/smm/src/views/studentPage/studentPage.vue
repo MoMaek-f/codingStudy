@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-28 21:33:09
- * @LastEditTime: 2020-06-05 18:33:43
+ * @LastEditTime: 2020-06-09 09:36:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \学生信息管理系统\vue版本\smm\src\views\home\homePage.vue
@@ -51,98 +51,47 @@
           <el-table-column prop="Political_outlook" label="政治面貌" width="80"></el-table-column>
           <el-table-column prop="college" label="所在学院" width="140"></el-table-column>
           <el-table-column prop="phone" label="联系方式" width="140"></el-table-column>
-          <el-table-column prop="phone" label="操作" width="170">
-            <template slot-scope="scope">
-              <el-button style="float:left" @click="toDetail(scope.row)">修改</el-button>
-              <el-button @click="deleteMess(scope.row)">删除</el-button>
-            </template>
-          </el-table-column>
         </el-table>
       </el-main>
       <el-main v-else-if="selected == '1-2'">
-          <el-form
-            :model="ruleForm"
-            status-icon
-            :rules="rules"
-            ref="ruleForm"
-            label-width="100px"
-            class="demo-ruleForm"
-            :label-position="labelPosition"
-          >
-            <el-form-item label="原密码" prop="pass">
-              <el-input
-                type="password"
-                v-model="ruleForm.pass"
-                autocomplete="off"
-                style="width: 300px;float: left"
-              ></el-input>
-            </el-form-item>
-            <el-form-item label="新密码" prop="pass">
-              <el-input
-                type="password"
-                v-model="ruleForm.pass"
-                autocomplete="off"
-                style="width: 300px;float: left"
-              ></el-input>
-            </el-form-item>
-            <el-form-item label="确认密码" prop="checkPass">
-              <el-input
-                type="password"
-                v-model="ruleForm.checkPass"
-                autocomplete="off"
-                style="width: 300px;float: left"
-              ></el-input>
-            </el-form-item>
-            <el-form-item style="float: left">
-              <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
-              <el-button @click="resetForm('ruleForm')">重置</el-button>
-            </el-form-item>
-          </el-form>
-      </el-main>
-      <el-main v-else-if="selected == '1-3'">
-        <span style="font-size: 18px">修改学生信息</span>
-        <div>
-          <div style="margin: 20px;"></div>
-          <el-form :label-position="labelPosition" label-width="120px" :model="formLabelAlign">
-            <el-form-item label="姓名">
-              <el-input v-model="updateStuMess.name" style="width: 300px; float:left"></el-input>
-            </el-form-item>
-            <el-form-item label="班级">
-              <el-input v-model="updateStuMess.class" style="width: 300px; float:left"></el-input>
-            </el-form-item>
-            <el-form-item label="学号">
-              <el-input v-model="updateStuMess.Id" style="width: 300px; float:left"></el-input>
-            </el-form-item>
-            <el-form-item label="性别">
-              <div style="float: left">
-                <el-radio v-model="updateStuMess.gender" label="男">男</el-radio>
-                <el-radio v-model="updateStuMess.gender" label="女">女</el-radio>
-              </div>
-            </el-form-item>
-            <el-form-item label="地址">
-              <el-input v-model="updateStuMess.address" style="width: 300px; float:left"></el-input>
-            </el-form-item>
-            <el-form-item label="生日">
-              <el-input v-model="updateStuMess.birthday" style="width: 300px; float:left"></el-input>
-            </el-form-item>
-            <el-form-item label="民族">
-              <el-input v-model="updateStuMess.nation" style="width: 300px; float:left"></el-input>
-            </el-form-item>
-            <el-form-item label="政治面貌">
-              <el-input v-model="updateStuMess.Political_outlook" style="width: 300px; float:left"></el-input>
-            </el-form-item>
-            <el-form-item label="所在学院">
-              <el-input v-model="updateStuMess.college" style="width: 300px; float:left"></el-input>
-            </el-form-item>
-            <el-form-item label="联系方式">
-              <el-input v-model="updateStuMess.phone" style="width: 300px; float:left"></el-input>
-            </el-form-item>
-            <el-form-item>
-              <el-button type="primary" style="float:left" @click="updateMess(updateStuMess)">确认</el-button>
-              <el-button type="primary" style="float:left" @click="cancel()">取消</el-button>
-            </el-form-item>
-          </el-form>
-        </div>
+        <el-form
+          :model="ruleForm"
+          status-icon
+          :rules="rules"
+          ref="ruleForm"
+          label-width="100px"
+          class="demo-ruleForm"
+          :label-position="labelPosition"
+        >
+          <el-form-item label="原密码" prop="pass">
+            <el-input
+              type="password"
+              v-model="this.password"
+              autocomplete="off"
+              style="width: 300px;float: left"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="新密码" prop="pass">
+            <el-input
+              type="password"
+              v-model="ruleForm.pass"
+              autocomplete="off"
+              style="width: 300px;float: left"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="确认密码" prop="checkPass">
+            <el-input
+              type="password"
+              v-model="ruleForm.checkPass"
+              autocomplete="off"
+              style="width: 300px;float: left"
+            ></el-input>
+          </el-form-item>
+          <el-form-item style="float: left">
+            <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+            <el-button @click="resetForm('ruleForm')">重置</el-button>
+          </el-form-item>
+        </el-form>
       </el-main>
       <el-main v-else-if="selected == '2-1'">
         <el-table :data="scores" key="scores">
@@ -185,9 +134,10 @@ export default {
     };
     return {
       studentMess: [],
-      updateStuMess:"",
+      updateStuMess: "",
       data1: [],
       userid: "",
+      password: "",
       selected: "1-1",
       labelPosition: "left",
       ruleForm: {
@@ -198,11 +148,12 @@ export default {
         pass: [{ validator: validatePass, trigger: "blur" }],
         checkPass: [{ validator: validatePass2, trigger: "blur" }]
       },
-      scores:[]
+      scores: []
     };
   },
   mounted() {
     this.userid = this.$route.query.username;
+    this.password = this.$route.query.password;
     this.getmessage();
   },
   methods: {
@@ -210,23 +161,36 @@ export default {
       this.axios
         .get(`http://localhost:6500/api/findmsgbyid/${this.userid}`)
         .then(res => {
-          let data = [res.data.user]
-          this.studentMess = data
+          let data = [res.data.user];
+          this.studentMess = data;
         });
     },
     queryMess(index) {
       this.selected = index;
     },
     changePass(index) {
-      this.selected= index
+      this.selected = index;
     },
-    queryScores(index){
+    queryScores(index) {
       this.selected = index;
     },
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          alert("submit!");
+          console.log(this.ruleForm);
+          this.password = this.ruleForm.pass;
+          this.axios
+            .post(
+              `http://localhost:6500/api/updatemsg/${this.userid}`,
+              {password:this.password}
+            )
+            .then(res => {
+              // console.log(res)
+              if (res.data.status) {
+                alert(res.data.msg);
+                this.selected = "1-1";
+              }
+            });
         } else {
           console.log("请重新输入");
           return false;
@@ -245,32 +209,8 @@ export default {
       console.log(studentMess);
       this.updateStuMess = studentMess;
     },
-    updateMess(updateStuMess) {
-      const Mes = {
-        name: updateStuMess.name,
-        Id: updateStuMess.Id,
-        birthday: updateStuMess.birthday,
-        gender: updateStuMess.gender,
-        address: updateStuMess.address,
-        phone: updateStuMess.phone,
-        Identity: updateStuMess.Identity,
-        class: updateStuMess.class,
-        college: updateStuMess.college,
-        Political_outlook: updateStuMess.Political_outlook,
-        nation: updateStuMess.nation
-      };
-      this.axios
-        .post(`http://localhost:6500/api/updatemsg/${updateStuMess.Id}`, Mes)
-        .then(res => {
-          // console.log(res)
-          if (res.data.status) {
-            alert(res.data.msg);
-            this.selected = "1-1";
-          }
-        });
-    },
-    searchScores(input) {
-      this.selected = "2-1";
+    searchScores(select) {
+      this.selected = select;
       this.axios
         .get(`http://localhost:6500/api/achievement/${this.userid}`)
         .then(res => {
@@ -279,7 +219,7 @@ export default {
           console.log(res);
           if (res.data.status == 400) {
             this.$alert("没有结果", "失败", {
-              confirmButtonText: "确定",
+              confirmButtonText: "确定"
             });
           }
         });

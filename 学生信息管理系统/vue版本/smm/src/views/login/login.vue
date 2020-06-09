@@ -1,13 +1,14 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-28 19:50:45
- * @LastEditTime: 2020-06-05 17:30:58
+ * @LastEditTime: 2020-06-09 09:40:21
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit 
  * @FilePath: \学生信息管理系统\vue版本\smm\src\views\login\login.vue
 --> 
 <template>
   <div id="login">
+      <el-alert title="管理员:1234 : 密码:1234;            学生账号:学号,如201720182001 : 密码:1234" type="info" width="200"></el-alert>
     <div class="loginToHome">
       <el-form
         ref="form"
@@ -38,8 +39,8 @@ export default {
     return {
       logining: false,
       form: {
-        name: "201720182004",
-        password: "1234"
+        name: "",
+        password: ""
       },
       ruleForm: {
         name: [{ required: true, message: "请输入账号", trigger: "blur" }],
@@ -59,16 +60,26 @@ export default {
             })
             .then(res => {
               const data = res.data;
-              console.log(data)
+              console.log(data);
               if (data.status === 200) {
                 this.logining = false;
-                if(data.user.Identity == 'admin') {
-                this.$router.push({name: "homePage", query: {username:this.form.name,password: this.form.password} });
+                if (data.user.Identity == "admin") {
+                  this.$router.push({
+                    name: "homePage",
+                    query: {
+                      username: this.form.name,
+                      password: this.form.password
+                    }
+                  });
+                } else {
+                  this.$router.push({
+                    name: "studentPage",
+                    query: {
+                      username: this.form.name,
+                      password: this.form.password
+                    }
+                  });
                 }
-                else{
-                  this.$router.push({name: "studentPage", query: {username:this.form.name,password: this.form.password} });
-                }
-
               } else {
                 this.logining = false;
                 this.$alert("用户名或密码错误!", "登陆失败", {
