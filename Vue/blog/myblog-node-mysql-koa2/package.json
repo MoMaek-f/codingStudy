@@ -1,0 +1,18 @@
+{
+  "name": "myblog-node-mysql-koa2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "knex": "^0.21.1",
+    "koa": "^2.13.0",
+    "koa-router": "^9.0.1",
+    "koa2-cors": "^2.0.6",
+    "mysql": "^2.18.1"
+  }
+}

@@ -1,18 +1,28 @@
 <template>
-  <el-container>
-    <el-header style="height: 50px">
-      <my-header/>
-    </el-header>
-    <el-container>
-      <el-aside class="aside" style="width: 15%;position:fixed">
-        <my-aside/>
-      </el-aside>
-      <el-main>
-        <my-ariticleList/>
-      </el-main>
-      <el-aside width="200px">right</el-aside>
-    </el-container>
-  </el-container>
+  <div>
+    <my-header />
+    <div style>
+      <el-row style="top: 50px;">
+        <el-col :xs="0" :sm="4" :md="4" :lg="4" :xl="4">
+          <div class="grid-content bg-purple hidden-sm-and-down" style>
+              <Affix :offset="50">
+              <my-aside />
+              </Affix>
+          </div>
+        </el-col>
+        <el-col :xs="24" :sm="16" :md="16" :lg="16" :xl="16">
+          <div class="grid-content bg-purple-light">
+            <my-ariticleList />
+          </div>
+        </el-col>
+        <el-col :xs="0" :sm="4" :md="4" :lg="4" :xl="4" style>
+          <div class="grid-content bg-purple">
+
+          </div>
+        </el-col>
+      </el-row>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -21,12 +31,20 @@ import Header from "../components/header";
 import Aside from "../components/aside/left";
 import ariticleList from "../components/ariticleList";
 
+import Affix from '../components/affix';
+
 export default {
   name: "Home",
+  data() {
+    return {
+      top: 60
+    };
+  },
   components: {
     "my-header": Header,
     "my-aside": Aside,
-    "my-ariticleList": ariticleList
+    "my-ariticleList": ariticleList,
+    Affix
   }
 };
 </script>
