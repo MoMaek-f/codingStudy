@@ -2,8 +2,9 @@
   <el-aside width="100%" class="aside">
     <div class="avatar">
       <img src="../../../assets/avatar.jpg" alt class="avatar" />
-      <span>亮亮</span>
-      <ul>
+      <span class="name">亮亮</span>
+      <span class="subname">时间，给勤奋者带来收获，给懒惰者带来空虚</span>
+      <ul class="social">
         <li>
           <img src="../../../assets/GitHub.png" alt />
           <a href="https://github.com/MoMaek-f" target="_blank">Github</a>
@@ -15,19 +16,13 @@
       </ul>
     </div>
     <div class="publish">
-      
-      <span>最新文章</span>
-      <el-divider></el-divider>
-      <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>6</li>
-        <li>7</li>
-        <li>8</li>
-        <li>9</li>
+      <div>
+      <el-divider content-position='left'><span>最新文章</span></el-divider>
+      </div>
+      <ul class="newestArticle">
+        <li v-for="(item,index) in newestArticle" :key="item.article_id">
+          <a href>{{newestArticle[index].title}}</a>
+        </li>
       </ul>
     </div>
     <div class="tag">
@@ -46,14 +41,27 @@
 export default {
   name: "Aside",
   data() {
-    return {};
+    return {
+      newestArticle: []
+    };
+  },
+  mounted() {
+    this.getNewestArticle();
+  },
+  methods: {
+    getNewestArticle() {
+      this.axios.get("http://localhost:3000/getNewestArticle").then(res => {
+        console.log(res.data, "最新文章");
+        this.newestArticle = res.data.data;
+      });
+    }
   }
 };
 </script>
 
 <style lang="less">
 @import "./style.less";
-.el-divider--horizontal{
+.el-divider--horizontal {
   margin: 2px;
 }
 </style>

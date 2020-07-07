@@ -1,23 +1,23 @@
 <template>
   <div>
     <my-header />
-    <div style>
+    <div>
       <el-row style="top: 50px;">
         <el-col :xs="0" :sm="4" :md="4" :lg="4" :xl="4">
           <div class="grid-content bg-purple hidden-sm-and-down" style>
-              <Affix :offset="50">
+            <Affix :offset="50">
               <my-aside />
-              </Affix>
+            </Affix>
           </div>
         </el-col>
-        <el-col :xs="24" :sm="16" :md="16" :lg="16" :xl="16">
+        <el-col :xs="24" :sm="24" :md="17" :lg="17" :xl="17">
           <div class="grid-content bg-purple-light">
             <my-ariticleList />
           </div>
         </el-col>
-        <el-col :xs="0" :sm="4" :md="4" :lg="4" :xl="4" style>
-          <div class="grid-content bg-purple">
-
+        <el-col :xs="0" :sm="3" :md="3" :lg="3" :xl="3" style>
+          <div class="grid-content bg-purple hidden-sm-and-down">
+            <my-aside />
           </div>
         </el-col>
       </el-row>
@@ -31,7 +31,7 @@ import Header from "../components/header";
 import Aside from "../components/aside/left";
 import ariticleList from "../components/ariticleList";
 
-import Affix from '../components/affix';
+import Affix from "../components/affix";
 
 export default {
   name: "Home",

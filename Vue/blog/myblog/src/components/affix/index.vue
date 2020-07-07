@@ -6,11 +6,6 @@
     </div>
 </template>
 <script>
-/**
-* @file Affix.vue
-* @author v_shenjieping@baidu.com
-* @date 2018-12-11 10:09:50
-*/
 export default {
     props: {
         offset: {

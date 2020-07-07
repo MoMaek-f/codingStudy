@@ -35,6 +35,9 @@ export default {
     about() {
       this.$store.state.selected = '4';
       this.$router.push({ path: "/about" });
+    },
+    click() {
+      alert("123")
     }
   }
 };

@@ -1,17 +1,22 @@
 const router = require('koa-router')()
-const {mysql} = require('../mysql')
+const { mysql } = require('../mysql')
 
-router.get('/getarticle', async  (ctx) => {
-    var results = await mysql('article_list').select()
+const article = require('../controllers/article.js')
 
-    var dataString = JSON.stringify(results);
-    var data = JSON.parse(dataString);
+// router.get('/getarticle', async  (ctx) => {
+//     var results = await mysql('article_list').select()
 
-    console.log(data)
-    ctx.body = { 
-      data: data,
-      status: 200
-    }
-})
+//     var dataString = JSON.stringify(results);
+//     var data = JSON.parse(dataString);
+
+//     console.log(data)
+//     ctx.body = { 
+//       data: data,
+//       status: 200
+//     }
+// })
+
+router.get('/getarticle', article.getArticle)
+router.get('/getNewestArticle', article.getNewestArticle)
 
 module.exports = router

@@ -56,7 +56,7 @@ export default {
   name: "test",
   data() {
     return {
-      articles: "# 一级标题\n ## 两级标题"
+      articles: ""
     };
   },
   components: {
