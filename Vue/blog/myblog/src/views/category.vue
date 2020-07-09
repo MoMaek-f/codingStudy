@@ -12,41 +12,38 @@
         </el-col>
         <el-col :xs="24" :sm="24" :md="17" :lg="17" :xl="17">
           <div class="grid-content bg-purple-light">
-            <my-ariticleList />
+            <div class="category">分类功能开发中</div>
           </div>
         </el-col>
-        <el-col :xs="0" :sm="3" :md="3" :lg="3" :xl="3" style>
+        <!-- <el-col :xs="0" :sm="3" :md="3" :lg="3" :xl="3" style>
           <div class="grid-content bg-purple hidden-sm-and-down">
-            
+            <my-aside />
           </div>
-        </el-col>
+        </el-col>-->
       </el-row>
     </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import Header from "../components/header";
 import Aside from "../components/aside/left";
-import ariticleList from "../components/ariticleList";
-
 import Affix from "../components/affix";
-
 export default {
-  name: "Home",
-  data() {
-    return {
-      loading: true
-    };
-  },
   components: {
     "my-header": Header,
     "my-aside": Aside,
-    "my-ariticleList": ariticleList,
     Affix
   }
 };
 </script>
+
 <style lang="less" scoped>
+.category {
+  background-color: #fff;
+  margin: 12px;
+  border-radius: 5px;
+  text-align: center;
+  height: 100px;
+}
 </style>

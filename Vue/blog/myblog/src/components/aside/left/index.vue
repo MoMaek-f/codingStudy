@@ -20,8 +20,8 @@
       <el-divider content-position='left'><span>最新文章</span></el-divider>
       </div>
       <ul class="newestArticle">
-        <li v-for="(item,index) in newestArticle" :key="item.article_id">
-          <a href>{{newestArticle[index].title}}</a>
+        <li v-for="(item,index) in newestArticle" :key="item.article_id" >
+          <a @click="toDetail(item.article_id)">{{newestArticle[index].title}}</a>
         </li>
       </ul>
     </div>
@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import {get} from "../../../utils"
 export default {
   name: "Aside",
   data() {
@@ -50,16 +51,25 @@ export default {
   },
   methods: {
     getNewestArticle() {
-      this.axios.get("http://localhost:3000/getNewestArticle").then(res => {
-        console.log(res.data, "最新文章");
-        this.newestArticle = res.data.data;
-      });
+      get("/getNewestArticle")
+      .then(res => {
+        // console.log(res.data, "最新文章");
+        this.newestArticle = res.data;
+      })
+  },
+  toDetail(id) {
+      this.$router.push({ 
+        path: '/ariticleDetail',
+        query: {
+          content: id
+        }
+      })
     }
-  }
+    }
 };
 </script>
 
-<style lang="less">
+<style lang="less" >
 @import "./style.less";
 .el-divider--horizontal {
   margin: 2px;

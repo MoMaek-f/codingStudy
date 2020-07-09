@@ -19,6 +19,11 @@ Vue.use(VueRouter)
   }
   },
   {
+    path: '/category',
+    name: 'category',
+    component: () => import('../views/category.vue')
+  },
+  {
     path: '/leaveMess',
     name: 'leaveMess',
     component: () => import('../views/leavemess.vue')

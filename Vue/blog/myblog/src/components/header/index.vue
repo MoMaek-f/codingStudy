@@ -26,7 +26,7 @@ export default {
     },
     category() {
       this.$store.state.selected = '2';
-      this.$router.push({ path: "/" });
+      this.$router.push({ path: "/category" });
     },
     leaveMess() {
       this.$store.state.selected = '3';
@@ -43,6 +43,6 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import "./style.less";
 </style>
