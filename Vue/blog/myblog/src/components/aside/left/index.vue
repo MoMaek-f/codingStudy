@@ -17,33 +17,43 @@
     </div>
     <div class="publish">
       <div>
-      <el-divider content-position='left'><span>最新文章</span></el-divider>
+        <el-divider content-position="left">
+          <span>最新文章</span>
+        </el-divider>
       </div>
       <ul class="newestArticle">
-        <li v-for="(item,index) in newestArticle" :key="item.article_id" >
+        <li v-for="(item,index) in newestArticle" :key="item.article_id">
           <a @click="toDetail(item.article_id)">{{newestArticle[index].title}}</a>
         </li>
       </ul>
     </div>
     <div class="tag">
       <div>
-        <el-tag>标签一</el-tag>
-        <el-tag type="success">标签二</el-tag>
-        <el-tag type="info">标签三</el-tag>
-        <el-tag type="warning">标签四</el-tag>
-        <el-tag type="danger">标签五</el-tag>
+        <el-tag
+          effect="plain"
+          :type="item.type"
+          v-for="item in tags"
+          :key="item.name"
+          @click="category(item.name)"
+        >{{item.name}}</el-tag>
       </div>
     </div>
   </el-aside>
 </template>
 
 <script>
-import {get} from "../../../utils"
+import { get } from "../../../utils";
 export default {
   name: "Aside",
   data() {
     return {
-      newestArticle: []
+      newestArticle: [],
+      tags: [
+        { name: "CSS", type: "success" },
+        { name: "JavaScript", type: "info" },
+        { name: "http", type: "warning" },
+        { name: "html", type: "danger" }
+      ]
     };
   },
   mounted() {
@@ -51,21 +61,25 @@ export default {
   },
   methods: {
     getNewestArticle() {
-      get("/getNewestArticle")
-      .then(res => {
+      get("/getNewestArticle").then(res => {
         // console.log(res.data, "最新文章");
         this.newestArticle = res.data;
-      })
-  },
-  toDetail(id) {
-      this.$router.push({ 
-        path: '/ariticleDetail',
+      });
+    },
+    toDetail(id) {
+      this.$router.push({
+        path: "/ariticleDetail",
         query: {
           content: id
         }
-      })
+      });
+    },
+    category(category) {
+      get(`/getArticleByType?type=${category}`).then(res => {
+        console.log(res.data);
+      });
     }
-    }
+  }
 };
 </script>
 

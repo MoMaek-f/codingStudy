@@ -107,11 +107,15 @@ export default {
 
 <style lang="less" scoped>
 .about {
-  // position: absolute;
   background-color: #fff;
   margin: 12px 12px 0 12px;
   border-radius: 5px;
   padding: 10px;
+  ul{
+    li{
+      margin: 8px 0;
+    }
+  }
   .aboutblog{
     margin-bottom: 50px;
   }

@@ -1,7 +1,7 @@
 import axios from "axios"
 
 //请求封装
-const host = "http://codstu.cn:3000"
+const host = "http://localhost:3000"
 
 export function get(url,data) {
   return new Promise((resolve,reject) => {

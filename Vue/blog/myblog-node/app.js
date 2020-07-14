@@ -10,6 +10,7 @@ const app =  new Koa()
 //   ctx.set("Access-Control-Allow-Origin", "*")
 //   await next()
 // })
+
 app.use(cors())
 app.use(router.routes())
 

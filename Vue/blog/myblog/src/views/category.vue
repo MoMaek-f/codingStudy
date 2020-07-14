@@ -13,6 +13,7 @@
         <el-col :xs="24" :sm="24" :md="17" :lg="17" :xl="17">
           <div class="grid-content bg-purple-light">
             <div class="category">分类功能开发中</div>
+            <my-ariticleList v-if="category"/>
           </div>
         </el-col>
         <!-- <el-col :xs="0" :sm="3" :md="3" :lg="3" :xl="3" style>
@@ -29,10 +30,17 @@
 import Header from "../components/header";
 import Aside from "../components/aside/left";
 import Affix from "../components/affix";
+import ariticleList from "../components/ariticleList";
 export default {
+  data() {
+    return {
+      category: false
+    }
+  },
   components: {
     "my-header": Header,
     "my-aside": Aside,
+    "my-ariticleList": ariticleList,
     Affix
   }
 };

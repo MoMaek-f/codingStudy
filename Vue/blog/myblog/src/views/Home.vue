@@ -17,7 +17,6 @@
         </el-col>
         <el-col :xs="0" :sm="3" :md="3" :lg="3" :xl="3" style>
           <div class="grid-content bg-purple hidden-sm-and-down">
-            
           </div>
         </el-col>
       </el-row>
@@ -26,7 +25,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import Header from "../components/header";
 import Aside from "../components/aside/left";
 import ariticleList from "../components/ariticleList";

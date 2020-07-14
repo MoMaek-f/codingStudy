@@ -51,9 +51,24 @@ async function getMyMess(ctx) {
     data: data
   }
 }
+async function getArticleByType(ctx) {
+  const { type: type } = ctx.query
+  var results = await mysql("article_list").where({
+    "category": type
+  }).select()
+
+  var dataString = JSON.stringify(results)
+  var data = JSON.parse(dataString)
+
+  console.log(data)
+  ctx.body = {
+    data: data
+  }
+}
 module.exports = {
   getArticle,
   getNewestArticle,
   getArticleById,
-  getMyMess
+  getMyMess,
+  getArticleByType
 }

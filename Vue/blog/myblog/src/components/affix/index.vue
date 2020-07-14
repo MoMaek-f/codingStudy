@@ -116,7 +116,7 @@ export default {
     }
 };
 </script>
-<style lang="less">
+<style lang="less" scoped>
 .affix{
   position: fixed
 }

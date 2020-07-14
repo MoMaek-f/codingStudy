@@ -12,7 +12,6 @@ export default {
 
 <style lang="less">
 body {
-  
   margin: 0;
   padding: 0;
   background-color: #f4f5f5!important;
