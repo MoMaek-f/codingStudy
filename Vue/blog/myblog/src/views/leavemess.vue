@@ -28,7 +28,6 @@
 </template>
 
 <script>
-
 import Header from "../components/header";
 import Aside from "../components/aside/left";
 import Affix from "../components/affix"
@@ -37,6 +36,9 @@ components: {
     "my-header": Header,
     "my-aside": Aside,
     Affix
+  },
+  mounted() {
+    this.$store.state.selected = "3";
   }
 }
 </script>

@@ -89,6 +89,7 @@ export default {
     }
   },
   mounted(){
+    this.$store.state.selected = "4";
     this.getMyMess()
   },
   methods:{

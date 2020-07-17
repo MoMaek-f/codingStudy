@@ -30,7 +30,7 @@ import Aside from "../components/aside/left";
 import ariticleList from "../components/ariticleList";
 
 import Affix from "../components/affix";
-
+import {get} from "../utils"
 export default {
   name: "Home",
   data() {
@@ -43,6 +43,20 @@ export default {
     "my-aside": Aside,
     "my-ariticleList": ariticleList,
     Affix
+  },
+  mounted() {
+    this.getArticle();
+  },
+  methods: {
+    getArticle() {
+      get("/getarticle")
+      .then(res => {
+        console.log(res.data);
+        const data = res.data;
+        this.$store.state.articles = data;
+        this.loading = false;
+      });
+    },
   }
 };
 </script>

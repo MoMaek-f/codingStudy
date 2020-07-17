@@ -27,16 +27,14 @@
         </li>
       </ul>
     </div>
-    <div class="tag">
-      <div>
+    <div class="tag" @click="$parent.$parent.$parent.$parent.showCategory()">
         <el-tag
           effect="plain"
           :type="item.type"
-          v-for="item in tags"
+          v-for="item in $store.state.tags"
           :key="item.name"
           @click="category(item.name)"
         >{{item.name}}</el-tag>
-      </div>
     </div>
   </el-aside>
 </template>
@@ -48,12 +46,6 @@ export default {
   data() {
     return {
       newestArticle: [],
-      tags: [
-        { name: "CSS", type: "success" },
-        { name: "JavaScript", type: "info" },
-        { name: "http", type: "warning" },
-        { name: "html", type: "danger" }
-      ]
     };
   },
   mounted() {
@@ -75,8 +67,12 @@ export default {
       });
     },
     category(category) {
+      this.$store.state.selected = '2'
+      this.$router.push({ path: "/category" });
       get(`/getArticleByType?type=${category}`).then(res => {
-        console.log(res.data);
+        const data = res.data
+        console.log(data);
+        this.$store.state.articles = data
       });
     }
   }

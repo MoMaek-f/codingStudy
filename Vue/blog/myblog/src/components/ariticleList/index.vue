@@ -1,15 +1,15 @@
 <template>
   <div v-loading="loading" element-loading-text="加载中">
-    <el-card @click.native="toDetail(item.article_id)"  class="box-card" v-for="(item,index) in articles" :key="item.article_id">  
+    <el-card @click.native="toDetail(item.article_id)"  class="box-card" v-for="(item,index) in $store.state.articles" :key="item.article_id">  
       <div>
         <div style="margin-left: 10px">
-          <span class="title" style="font-size: 18px">{{articles[index].title}}</span>
-          <span style="font-size: 10px;float:right;line-height: 24px">{{articles[index].add_time.slice(0,10)}}</span>
+          <span class="title" style="font-size: 18px">{{$store.state.articles[index].title}}</span>
+          <span style="font-size: 10px;float:right;line-height: 24px">{{$store.state.articles[index].add_time.slice(0,10)}}</span>
         </div>
         <el-divider content-position="left" style="position: absolute;top: 40px">
         </el-divider>
       </div>
-      <div v-html="compiledMarkdown(articles[index].introduce)" style="margin: 16px">
+      <div v-html="compiledMarkdown($store.state.articles[index].introduce)" style="margin: 16px">
       </div>
     </el-card>
   </div>
@@ -42,24 +42,13 @@ export default {
   name: "main",
   data() {
     return {
-      loading: true,
+      loading: false,
       articles: [],
       introduce: []
     };
   },
-  mounted() {
-    this.getArticle();
-  },
   methods: {
-    getArticle() {
-      get("/getarticle")
-      .then(res => {
-        console.log(res.data);
-        const data = res.data;
-        this.articles = data;
-        this.loading = false;
-      });
-    },
+    
     toDetail(id) {
       this.$router.push({
         path: "/ariticleDetail",
