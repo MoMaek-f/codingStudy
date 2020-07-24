@@ -15,6 +15,9 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f4f5f5!important;
-  overflow: scroll;
+  overflow-y: scroll;
+}
+ul{
+  // line-height: 35px;
 }
 </style>

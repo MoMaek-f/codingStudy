@@ -23,14 +23,14 @@
       </div>
       <ul class="newestArticle">
         <li v-for="(item,index) in newestArticle" :key="item.article_id">
-          <a @click="toDetail(item.article_id)">{{newestArticle[index].title}}</a>
+          <span @click="toDetail(item.article_id)">{{newestArticle[index].title}}</span>
         </li>
       </ul>
     </div>
-    <div class="tag" @click="$parent.$parent.$parent.$parent.showCategory()">
+    <div class="tag">
         <el-tag
           effect="plain"
-          :type="item.type"
+          :type="random()"
           v-for="item in $store.state.tags"
           :key="item.name"
           @click="category(item.name)"
@@ -54,7 +54,6 @@ export default {
   methods: {
     getNewestArticle() {
       get("/getNewestArticle").then(res => {
-        // console.log(res.data, "最新文章");
         this.newestArticle = res.data;
       });
     },
@@ -68,18 +67,23 @@ export default {
     },
     category(category) {
       this.$store.state.selected = '2'
-      this.$router.push({ path: "/category" });
+      this.$store.state.category = false
+      this.$router.push({ path: "/category" })
       get(`/getArticleByType?type=${category}`).then(res => {
         const data = res.data
         console.log(data);
         this.$store.state.articles = data
       });
+    },
+    random() {
+      const type = this.$store.state.type[Math.floor(Math.random()*5)]
+      return type
     }
   }
 };
 </script>
 
-<style lang="less" >
+<style lang="less" scoped>
 @import "./style.less";
 .el-divider--horizontal {
   margin: 2px;

@@ -1,15 +1,23 @@
 <template>
   <div v-loading="loading" element-loading-text="加载中">
-    <el-card @click.native="toDetail(item.article_id)"  class="box-card" v-for="(item,index) in $store.state.articles" :key="item.article_id">  
+    <el-card
+      @click.native="toDetail(item.article_id)"
+      class="box-card"
+      v-for="(item,index) in $store.state.articles"
+      :key="item.article_id"
+    >
       <div>
         <div style="margin-left: 10px">
           <span class="title" style="font-size: 18px">{{$store.state.articles[index].title}}</span>
-          <span style="font-size: 10px;float:right;line-height: 24px">{{$store.state.articles[index].add_time.slice(0,10)}}</span>
+          <span
+            style="font-size: 10px;float:right;line-height: 24px"
+          >{{$store.state.articles[index].add_time.slice(0,10)}}</span>
         </div>
-        <el-divider content-position="left" style="position: absolute;top: 40px">
-        </el-divider>
+        <el-divider content-position="left" style="position: absolute;top: 40px"></el-divider>
       </div>
-      <div v-html="compiledMarkdown($store.state.articles[index].introduce)" style="margin: 16px">
+      <div v-html="compiledMarkdown($store.state.articles[index].introduce)" style="margin: 16px"></div>
+      <div style="margin-left: 10px">
+        <el-tag :type="danger" size="mini" effect="dark">{{$store.state.articles[index].category}}</el-tag>
       </div>
     </el-card>
   </div>
@@ -48,7 +56,6 @@ export default {
     };
   },
   methods: {
-    
     toDetail(id) {
       this.$router.push({
         path: "/ariticleDetail",
@@ -66,7 +73,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import "./style.less";
 pre {
   display: block;

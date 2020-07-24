@@ -49,6 +49,7 @@ components: {
   margin: 12px;
   border-radius: 5px;
   text-align: center;
+  line-height: 100px;
   height: 100px;
 }
 </style>

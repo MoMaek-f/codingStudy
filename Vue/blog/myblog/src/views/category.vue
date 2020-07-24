@@ -12,16 +12,16 @@
         </el-col>
         <el-col :xs="24" :sm="24" :md="17" :lg="17" :xl="17">
           <div class="grid-content bg-purple-light">
-            <div class="tag" v-if="show" @click="showCategory">
+            <div class="tag" v-if="$store.state.category">
               <el-tag
                 effect="plain"
-                :type="item.type"
+                :type="random()"
                 v-for="item in $store.state.tags"
                 :key="item.name"
                 @click="$refs.aside.category(item.name)"
               >{{item.name}}</el-tag>
             </div>
-            <div v-if="!show">
+            <div v-if="!$store.state.category">
               <div class="category" v-show="$store.state.articles == ''">暂无相关文章！</div>
               <my-ariticleList v-show="$store.state.articles != []" />
             </div>
@@ -48,7 +48,7 @@ export default {
   data() {
     return {
       category: false,
-      show: true
+      show: true,
     };
   },
   mounted() {
@@ -61,9 +61,9 @@ export default {
     Affix
   },
   methods: {
-    showCategory() {
-      console.log("123")
-      this.show = false
+    random() {
+      const type = this.$store.state.type[Math.floor(Math.random()*5)]
+      return type
     }
   }
 };
@@ -75,17 +75,23 @@ export default {
   margin: 15px;
   border-radius: 5px;
   text-align: center;
+  line-height: 100px;
   height: 100px;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
 }
 div.tag{
+    display: flex;
     background-color: #fff;
     margin: 15px;
     border-radius: 5px;
     box-shadow:0 2px 12px 0 rgba(0,0,0,.1);
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100px;
       .el-tag{
         margin: 6px;
         cursor: pointer;
       }
-  }
+}
 </style>

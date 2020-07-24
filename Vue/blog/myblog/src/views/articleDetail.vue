@@ -94,7 +94,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 pre {
   display: block;
   background-color: #f3f3f3;

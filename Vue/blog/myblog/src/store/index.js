@@ -8,11 +8,19 @@ export default new Vuex.Store({
     selected: '1',
     articles: [],
     tags: [
-      { name: "CSS", type: "success" },
-      { name: "JavaScript", type: "info" },
-      { name: "http", type: "warning" },
-      { name: "html", type: "danger" }
-    ]
+      { name: "CSS",  },
+      { name: "JavaScript" },
+      { name: "http"},
+      { name: "html"  },
+      { name: "前端"  },
+      { name: "阅读"  },
+      { name: "axios" },
+      { name: "koa" },
+      { name: "mysql" },
+      { name: "vue"},
+    ],
+    type: ['','success','info','warning','danger'],
+    category: true
   },
   mutations: {
   },

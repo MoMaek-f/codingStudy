@@ -14,11 +14,11 @@
           <div class="grid-content bg-purple-light">
             <div class="about">
               <div class="aboutblog">
-              <el-divider content-position="left">blog</el-divider>
+                <el-divider content-position="left">blog</el-divider>
                 <div v-html="compiledMarkdown1"></div>
               </div>
               <div class="aboutme">
-              <el-divider content-position="left">关于我</el-divider>
+                <el-divider content-position="left">关于我</el-divider>
                 <div v-html="compiledMarkdown2"></div>
               </div>
             </div>
@@ -61,13 +61,13 @@ import Header from "../components/header";
 import Aside from "../components/aside/left";
 import Affix from "../components/affix";
 
-import {get} from "../utils"
+import { get } from "../utils";
 export default {
   data() {
     return {
-      blog: '',
-      jianli: ''
-    }
+      blog: "",
+      jianli: ""
+    };
   },
   components: {
     "my-header": Header,
@@ -88,19 +88,18 @@ export default {
       });
     }
   },
-  mounted(){
+  mounted() {
     this.$store.state.selected = "4";
-    this.getMyMess()
+    this.getMyMess();
   },
-  methods:{
+  methods: {
     getMyMess() {
-      get("/getMyMess")
-      .then(res => {
-        console.log(res.data,"mess")
-        const data = res.data[0]
-        this.blog = data.blog
-        this.jianli = data.mymess
-      })
+      get("/getMyMess").then(res => {
+        console.log(res.data, "mess");
+        const data = res.data[0];
+        this.blog = data.blog;
+        this.jianli = data.mymess;
+      });
     }
   }
 };
@@ -112,13 +111,12 @@ export default {
   margin: 12px 12px 0 12px;
   border-radius: 5px;
   padding: 10px;
-  ul{
-    li{
-      margin: 8px 0;
-    }
-  }
-  .aboutblog{
+  .aboutblog {
     margin-bottom: 50px;
   }
+  /deep/ ul{
+  line-height: 35px;
 }
+}
+
 </style>
